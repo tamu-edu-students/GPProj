@@ -12,3 +12,8 @@ from statsmodels.tsa.seasonal import seasonal_decompose
 import scipy
 from sklearn.metrics import r2_score
 from statsmodels.graphics.tsaplots import plot_acf
+
+import geopandas as gpd
+
+au = gpd.read_file('data/AustinDistrict.geojson')
+print(au.head())

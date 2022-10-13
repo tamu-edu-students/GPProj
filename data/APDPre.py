@@ -7,6 +7,9 @@ df1 = pd.read_csv('2013_APD_Traffic_Fatalities.csv',
                            'Hour','Time','XCOORD','YCOORD'])
 df1.rename(columns={'Type':'Type', 'Number of Fatalities':'# Fat',
                     'XCOORD':'x','YCOORD':'y'}, inplace=True)
+# Some x's and y's are in reverse. Fix
+# idx = df1.loc[df1['x'] > 0]
+df1.update(df1.loc[df1['x'] > 0].rename({'x': 'y', 'y': 'x'}, axis=1))
 
 df2 = pd.read_csv('2014_APD_Traffic_Fatalities.csv',
                   usecols=['TYPE','Number of Fatalities','Date','Month','Day',
